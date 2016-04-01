@@ -6,7 +6,7 @@
 
 int main(void) {
 	gfInit();
-	gfSelfTest(10000);	
+	gfSelfTest(10000);
 	ecSelfTest(1000);
 	gfQuit();
 	return EXIT_SUCCESS;
