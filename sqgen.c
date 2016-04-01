@@ -388,4 +388,5 @@ int main()
    fprintf(out,"#endif /* ?LITTLE_ENDIAN */\n");
 
    fclose(out);
+   return 0;
    }
