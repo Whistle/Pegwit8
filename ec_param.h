@@ -11,6 +11,8 @@
 	EC_B	scalar term of elliptic curve equation (y^2 + xy = x^3 + EC_B)
 */
 
+#define SELF_TESTING
+
 #define GF_M		255 /* choose this value from the list below */
 
 #if GF_M == 24

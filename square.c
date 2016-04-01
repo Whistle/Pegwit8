@@ -183,13 +183,12 @@ const char *squareBanner =
 #endif /* ?LITTLE_ENDIAN */
 
 /*#define mul(a, b) ((a && b) ? alogtab[(mtemp = logtab[a] + logtab[b]) >= 255 ? mtemp - 255 : mtemp] : 0)*/
+word16 mtemp = 0;
 
 static byte mul(byte a, byte b) {
-	word16 mtemp = 0;
 	if(a && b) {
 		return alogtab[(mtemp = logtab[a] + logtab[b]) >= 255 ? mtemp - 255 : mtemp];
 	}
-	mtemp = 0;
 	return 0;
 }
 
@@ -210,6 +209,7 @@ static void squareTransform (word32 roundKey[4])
 	int i, j;
 	byte A[4][4], B[4][4];
 
+	mtemp = 0;
 	for (i = 0; i < 4; i++) {
 		A[i][0] = GETB0 (roundKey[i]);
 		A[i][1] = GETB1 (roundKey[i]);
@@ -235,6 +235,7 @@ static void squareTransform (word32 roundKey[4])
 			PUTB2 (B[i][2]) ^
 			PUTB3 (B[i][3]);
 	}
+	mtemp = 0;
 	/* destroy potentially sensitive information: */
 	memset (A, 0, sizeof (A));
 	memset (B, 0, sizeof (B));

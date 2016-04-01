@@ -672,11 +672,8 @@ int gfSelfTest (int test_count)
 		}
 		/* square root test: sqrt(b)^2 = b */
 		b = (lunit) rand ();
-		if (b) {
-			z[0] = 1; z[1] = b;
-		} else {
-			z[0] = 0;
-		}
+		z[0] = 1; z[1] = b;
+
 		gfSquareRoot (y, b);
 		gfSquare (x, y);
 		if (!gfEqual (x, z)) {
