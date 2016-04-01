@@ -240,7 +240,7 @@ size_t freadPlus(void *ptr, size_t size, size_t n, FILE *stream)
 {
    size_t result = 0;
    int bytesOver = 0;
-   unsigned char *out = ptr;
+   unsigned char *out = (unsigned char *) ptr;
 
    if(stdin != stream)
       return fread(ptr, size, n, stream);

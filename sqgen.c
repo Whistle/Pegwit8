@@ -68,7 +68,7 @@ void init()
 
 static word32 T[256], D[256];
 
-void main()
+int main()
 {
    FILE *out;
    byte ibox[256], g[9];

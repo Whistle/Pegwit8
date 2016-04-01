@@ -51,8 +51,8 @@ int gfInit (void)
 		/* already initialized */
 		return 0;
 	}
-	if (logt != NULL && expt == NULL ||
-		logt == NULL && expt != NULL) {
+	if ((logt != NULL && expt == NULL) ||
+		(logt == NULL && expt != NULL)) {
 		return 2; /* logic error: half initialized (?!) */
 	}
 	if ((logt = (lunit *) malloc (BASE * sizeof (lunit))) == NULL) {

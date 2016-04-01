@@ -119,18 +119,6 @@
 #endif /* ?USUAL_TYPES */
 
 
-/* platform endianness: */
-#if !defined(LITTLE_ENDIAN) && !defined(BIG_ENDIAN)
-#	if defined(_M_IX86) || defined(_M_I86) || defined(__alpha)
-#		define LITTLE_ENDIAN
-#	else
-#		error "Either LITTLE_ENDIAN or BIG_ENDIAN must be defined"
-#	endif
-#elif defined(LITTLE_ENDIAN) && defined(BIG_ENDIAN)
-#	error "LITTLE_ENDIAN and BIG_ENDIAN must not be simultaneously defined"
-#endif /* !LITTLE_ENDIAN && !BIG_ENDIAN */
-
-
 /* Microsoft C / Intel x86 optimizations: */
 #if defined(_MSC_VER) && defined(_M_IX86) 
 #	define HARDWARE_ROTATIONS
@@ -211,7 +199,7 @@ static void squareTransform (word32 roundKey[4])
 	/* apply theta to a roundKey */
 {
 	int i, j;
-	word16 mtemp;
+	word16 mtemp = 0;
 	byte A[4][4], B[4][4];
 
 	for (i = 0; i < 4; i++) {

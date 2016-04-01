@@ -203,7 +203,7 @@ void vlSubtract (vlPoint u, const vlPoint v)
 
 void vlShortLshift (vlPoint p, int n)
 {
-	word16 i, T=0;
+	word16 i;
 
 	assert (p != NULL);
 	if (p[0] == 0) {
