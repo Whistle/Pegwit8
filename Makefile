@@ -1,8 +1,7 @@
 OBJS = square.o sqcts.o sha1.o ec_vlong.o ec_param.o ec_field.o ec_curve.o ec_crypt.o main.o
 
 CC = gcc
-#CFLAGS = -g -Wall -Wextra -Werror -Wunused
-CFLAGS = -g -Wall -Wextra -Wunused
+CFLAGS = -g -Wall -Wextra -Werror -Wunused
 INCS = -I.
 
 all: main
