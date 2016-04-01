@@ -182,7 +182,16 @@ const char *squareBanner =
 #	define PHI_ROT(x, s) ROTL(x, s)
 #endif /* ?LITTLE_ENDIAN */
 
-#define mul(a, b) ((a && b) ? alogtab[(mtemp = logtab[a] + logtab[b]) >= 255 ? mtemp - 255 : mtemp] : 0)
+/*#define mul(a, b) ((a && b) ? alogtab[(mtemp = logtab[a] + logtab[b]) >= 255 ? mtemp - 255 : mtemp] : 0)*/
+
+static byte mul(byte a, byte b) {
+	word16 mtemp = 0;
+	if(a && b) {
+		return alogtab[(mtemp = logtab[a] + logtab[b]) >= 255 ? mtemp - 255 : mtemp];
+	}
+	mtemp = 0;
+	return 0;
+}
 
 #define D(p) ((word32 *)(p))
 
@@ -199,7 +208,6 @@ static void squareTransform (word32 roundKey[4])
 	/* apply theta to a roundKey */
 {
 	int i, j;
-	word16 mtemp = 0;
 	byte A[4][4], B[4][4];
 
 	for (i = 0; i < 4; i++) {
@@ -228,7 +236,6 @@ static void squareTransform (word32 roundKey[4])
 			PUTB3 (B[i][3]);
 	}
 	/* destroy potentially sensitive information: */
-	mtemp = 0;
 	memset (A, 0, sizeof (A));
 	memset (B, 0, sizeof (B));
 } /* squareTransform */
